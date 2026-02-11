@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo con confirm</title>
+</head>
+<body>
+
+    <h2>Ejemplo usando confirm()</h2>
+
+    <button onclick="preguntar()">Haz clic aquí</button>
+
+    <script>
+        function preguntar() {
+            var respuesta = confirm("¿Quieres continuar?");
+
+            if (respuesta) {
+                alert("Has pulsado Aceptar 👍");
+            } else {
+                alert("Has pulsado Cancelar 👎");
+            }
+        }
+    </script>
+
+</body>
+</html>
