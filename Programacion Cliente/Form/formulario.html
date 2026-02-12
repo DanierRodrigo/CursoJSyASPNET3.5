@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Completo</title>
+</head>
+<body>
+
+    <h2>Formulario de Registro</h2>
+
+    <form name="miFormulario"
+          method="post"
+          action="procesar.php"
+          enctype="multipart/form-data"
+          target="_blank"
+          onsubmit="return validarFormulario();">
+
+        Nombre:
+        <input type="text" name="nombre"><br><br>
+
+        Edad:
+        <input type="number" name="edad"><br><br>
+
+        Email:
+        <input type="email" name="email"><br><br>
+
+        Contraseña:
+        <input type="password" name="password"><br><br>
+
+        Género:
+        <select name="genero">
+            <option value="">Seleccione</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+        </select><br><br>
+
+        Foto:
+        <input type="file" name="foto"><br><br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+    <script>
+
+        function validarFormulario() {
+
+            // Acceso usando document.forms por índice
+            let formulario = document.forms[0];
+
+            let nombre = formulario["nombre"].value;
+            let edad = formulario["edad"].value;
+            let email = formulario["email"].value;
+            let genero = formulario["genero"].value;
+
+            // Validaciones
+            if (nombre === "") {
+                alert("El nombre es obligatorio");
+                return false;
+            }
+
+            if (edad < 18) {
+                alert("Debes ser mayor de edad");
+                return false;
+            }
+
+            if (genero === "") {
+                alert("Debes seleccionar un género");
+                return false;
+            }
+
+            // Llamada a función pasando variable
+            mensajePersonalizado(nombre);
+
+            return true; // Permite enviar el formulario
+        }
+
+        function mensajePersonalizado(nombreUsuario) {
+            alert("Formulario válido. Gracias " + nombreUsuario);
+        }
+
+    </script>
+
+</body>
+</html>
