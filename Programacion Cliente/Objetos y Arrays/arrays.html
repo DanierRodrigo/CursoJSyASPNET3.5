@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de Arrays</title>
+</head>
+<body>
+
+    <h2>Ejemplo de Array en JavaScript</h2>
+    <button onclick="mostrarArray()">Mostrar datos</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function mostrarArray() {
+
+            // Crear un array
+            let nombres = ["Ana", "Luis", "Carlos", "María"];
+
+            // Agregar un nuevo elemento
+            nombres.push("Sofía");
+
+            // Mostrar los elementos
+            let texto = "<ul>";
+
+            for (let i = 0; i < nombres.length; i++) {
+                texto += "<li>" + nombres[i] + "</li>";
+            }
+
+            texto += "</ul>";
+
+            document.getElementById("resultado").innerHTML = texto;
+        }
+    </script>
+
+</body>
+</html>
