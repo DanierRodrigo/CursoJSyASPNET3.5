@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú</title>
+</head>
+<body>
+    <h3>Menú de navegación</h3>
+    <ul>
+        <li><a href="https://www.google.com" target="contenido">Google</a></li>
+        <li><a href="https://www.wikipedia.org" target="contenido">Wikipedia</a></li>
+        <li><a href="javascript:mostrarInfo()" target="contenido">Info Sistema</a></li>
+    </ul>
+
+    <script>
+        function mostrarInfo() {
+            // Accediendo al frame derecho
+            let frameContenido = parent.frames["contenido"];
+
+            // Propiedades de screen
+            let ancho = screen.width;
+            let alto = screen.height;
+
+            // Objeto navigator
+            let navegador = navigator.appName;
+            let version = navigator.appVersion;
+
+            // Mostrar información en el frame derecho
+            frameContenido.document.body.innerHTML =
+                "<h2>Información del Sistema</h2>" +
+                "<p>Pantalla: " + ancho + "x" + alto + "</p>" +
+                "<p>Navegador: " + navegador + " (versión " + version + ")</p>" +
+                "<p>Altura de la ventana: " + window.innerHeight + "px</p>";
+        }
+    </script>
+</body>
+</html>
