@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo Document</title>
+</head>
+<body>
+
+    <h1 id="titulo">Ejemplo del objeto Document</h1>
+
+    <p>Este es un párrafo de ejemplo.</p>
+    <p>Este es otro párrafo.</p>
+
+    <button onclick="cambiarTitulo()">Cambiar título</button>
+    <button onclick="cambiarColores()">Cambiar colores</button>
+    <button onclick="contarParrafos()">Contar párrafos</button>
+    <button onclick="crearElemento()">Crear nuevo elemento</button>
+
+    <div id="resultado"></div>
+
+    <script>
+
+        function cambiarTitulo() {
+            // Cambiar el título de la pestaña
+            document.title = "Título modificado con JavaScript";
+
+            // Cambiar texto del H1
+            document.getElementById("titulo").innerHTML = "Título cambiado dinámicamente";
+        }
+
+        function cambiarColores() {
+            // Forma moderna (recomendada)
+            document.body.style.backgroundColor = "lightblue";
+            document.body.style.color = "darkblue";
+
+            // Forma antigua (aún funciona)
+            document.bgColor = "lightyellow";
+            document.fgColor = "black";
+        }
+
+        function contarParrafos() {
+            let parrafos = document.getElementsByTagName("p");
+            document.getElementById("resultado").innerHTML =
+                "Hay " + parrafos.length + " párrafos en la página.";
+        }
+
+        function crearElemento() {
+            // Crear un nuevo elemento
+            let nuevo = document.createElement("p");
+            nuevo.innerHTML = "Este párrafo fue creado dinámicamente.";
+
+            // Agregarlo al body
+            document.body.appendChild(nuevo);
+        }
+
+        // Ejemplo con querySelector
+        let primerParrafo = document.querySelector("p");
+        primerParrafo.style.fontWeight = "bold";
+
+    </script>
+
+</body>
+</html>
