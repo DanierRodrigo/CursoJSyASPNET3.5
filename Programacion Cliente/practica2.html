@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Nombre y Apellido</title>
+</head>
+<body>
+
+    <h2>Ejercicio con repetición</h2>
+    <button onclick="verificarNombre()">Iniciar</button>
+
+    <script>
+        function verificarNombre() {
+
+            let nombre = prompt("Ingresa tu nombre:", "Anónimo");
+
+            // Si cancela
+            if (nombre === null) {
+                alert("Operación cancelada. Intentemos nuevamente.");
+                verificarNombre(); // Se vuelve a llamar
+                return;
+            }
+
+            let apellido = prompt("Ingresa tu apellido:", "Anónimo");
+
+            // Si cancela
+            if (apellido === null) {
+                alert("Operación cancelada. Intentemos nuevamente.");
+                verificarNombre(); // Se vuelve a llamar
+                return;
+            }
+
+            let respuesta = confirm("¿Tu nombre completo es " + nombre + " " + apellido + "?");
+
+            if (respuesta) {
+                alert("Has confirmado que tu nombre es correcto.");
+            } else {
+                alert("Has indicado que el nombre no es correcto. Intentemos nuevamente.");
+                verificarNombre(); // Se vuelve a llamar
+            }
+        }
+    </script>
+
+</body>
+</html>
