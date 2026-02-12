@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Location y History Completo</title>
+</head>
+<body>
+
+    <h2>Ejemplo completo de Location y History</h2>
+
+    <button onclick="mostrarURL()">Mostrar URL actual</button>
+    <button onclick="recargar()">Recargar página</button>
+    <button onclick="reemplazar()">Ir a Google (replace)</button>
+    <button onclick="asignar()">Ir a Google (assign)</button>
+    <button onclick="volver()">History Back</button>
+    <button onclick="adelante()">History Forward</button>
+    <button onclick="ir()">History Go(-1)</button>
+
+    <p id="info"></p>
+
+    <script>
+
+        function mostrarURL() {
+            document.getElementById("info").innerHTML =
+                "URL completa: " + window.location.href +
+                "<br>Protocolo: " + window.location.protocol +
+                "<br>Host: " + window.location.host +
+                "<br>Ruta: " + window.location.pathname;
+        }
+
+        function recargar() {
+            window.location.reload();
+        }
+
+        function reemplazar() {
+            // No guarda la página actual en el historial
+            window.location.replace("https://www.google.com");
+        }
+
+        function asignar() {
+            // Guarda la página en el historial
+            window.location.assign("https://www.google.com");
+        }
+
+        function volver() {
+            history.back();
+        }
+
+        function adelante() {
+            history.forward();
+        }
+
+        function ir() {
+            history.go(-1); // Equivalente a back()
+        }
+
+    </script>
+
+</body>
+</html>
