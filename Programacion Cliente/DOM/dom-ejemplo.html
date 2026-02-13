@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo Completo DOM</title>
+<style>
+  .activo { color: green; font-weight: bold; }
+  .oculto { display: none; }
+  .caja { padding:10px; border:1px solid #ccc; margin:5px 0; }
+</style>
+</head>
+<body>
+
+<h1 id="titulo">Manipulación del DOM</h1>
+
+<button id="btnTexto">Cambiar Texto</button>
+<button id="btnClase">Toggle Clase</button>
+<button id="btnCrear">Crear Elemento</button>
+<button id="btnEliminar">Eliminar Último</button>
+<button id="btnOcultar">Mostrar/Ocultar</button>
+
+<div id="contenedor" class="caja">
+  <p class="parrafo">Primer párrafo</p>
+  <p class="parrafo">Segundo párrafo</p>
+</div>
+
+<h3>Formulario</h3>
+<form id="miFormulario">
+  <input type="text" id="inputTexto" placeholder="Escribe algo">
+  <button type="submit">Guardar</button>
+</form>
+
+<ul id="lista"></ul>
+
+<script>
+/* ============================= */
+/* 1. SELECCIÓN DE ELEMENTOS */
+/* ============================= */
+const titulo = document.getElementById("titulo");
+const botones = document.querySelectorAll("button");
+const contenedor = document.querySelector("#contenedor");
+
+/* ============================= */
+/* 2. MODIFICAR CONTENIDO */
+/* ============================= */
+document.getElementById("btnTexto").addEventListener("click", () => {
+  titulo.textContent = "Texto cambiado dinámicamente";
+});
+
+/* ============================= */
+/* 3. MANEJO DE CLASES */
+/* ============================= */
+document.getElementById("btnClase").addEventListener("click", () => {
+  titulo.classList.toggle("activo");
+});
+
+/* ============================= */
+/* 4. CREAR ELEMENTOS */
+/* ============================= */
+document.getElementById("btnCrear").addEventListener("click", () => {
+  const nuevo = document.createElement("p");
+  nuevo.textContent = "Nuevo elemento creado";
+  nuevo.className = "parrafo";
+  contenedor.appendChild(nuevo);
+});
+
+/* ============================= */
+/* 5. ELIMINAR ELEMENTOS */
+/* ============================= */
+document.getElementById("btnEliminar").addEventListener("click", () => {
+  const ultimo = contenedor.lastElementChild;
+  if (ultimo) ultimo.remove();
+});
+
+/* ============================= */
+/* 6. ATRIBUTOS */
+/* ============================= */
+titulo.setAttribute("data-info", "Ejemplo DOM");
+
+/* ============================= */
+/* 7. ESTILOS */
+/* ============================= */
+titulo.style.cursor = "pointer";
+
+/* ============================= */
+/* 8. TRAVERSING (RECORRIDO) */
+/* ============================= */
+console.log("Padre:", contenedor.parentElement);
+console.log("Hijos:", contenedor.children);
+console.log("Primer hijo:", contenedor.firstElementChild);
+
+/* ============================= */
+/* 9. MOSTRAR / OCULTAR */
+/* ============================= */
+document.getElementById("btnOcultar").addEventListener("click", () => {
+  contenedor.classList.toggle("oculto");
+});
+
+/* ============================= */
+/* 10. FORMULARIOS */
+/* ============================= */
+const formulario = document.getElementById("miFormulario");
+const lista = document.getElementById("lista");
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const valor = inputTexto.value.trim();
+  if (!valor) return;
+
+  const li = document.createElement("li");
+  li.textContent = valor;
+  lista.appendChild(li);
+
+  localStorage.setItem("ultimoValor", valor);
+  formulario.reset();
+});
+
+/* ============================= */
+/* 11. EVENT DELEGATION */
+/* ============================= */
+lista.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    e.target.style.textDecoration = "line-through";
+  }
+});
+
+/* ============================= */
+/* 12. DOCUMENT FRAGMENT */
+/* ============================= */
+const fragment = document.createDocumentFragment();
+for (let i = 1; i <= 3; i++) {
+  const item = document.createElement("li");
+  item.textContent = "Item inicial " + i;
+  fragment.appendChild(item);
+}
+lista.appendChild(fragment);
+
+/* ============================= */
+/* 13. TEMPORIZADORES */
+/* ============================= */
+setTimeout(() => {
+  console.log("Ejecutado después de 3 segundos");
+}, 3000);
+
+</script>
+
+</body>
+</html>
